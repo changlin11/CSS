@@ -25,7 +25,7 @@
     height: 1px;
     background-color: #fff;
     position: relative;
-    transition: all .3s ease-in-out;
+    transition: transform .3s ease-in-out, top .3s ease-in-out .3s;
     top:0;
 }
 
@@ -36,11 +36,13 @@
 #toggler:checked + label .hamburger-container span:nth-child(1){
     transform: rotate(45deg);
     top: 4px;
+    transition: top .3s ease-in-out, transform .3s ease-in-out .3s;
 }
 
 #toggler:checked + label .hamburger-container span:nth-child(2){
     transform: rotate(-45deg);
     top: -4px;
+    transition: top .3s ease-in-out, transform .3s ease-in-out .3s;
 }
 
 header{
@@ -52,4 +54,30 @@ header{
 body{
     padding: 0;
     margin: 0;
+}
+
+.nav-items{
+    background-color: rgba(0, 0, 0, .82);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 44px;
+    left: 0;
+    transform: scaleY(0);
+    transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+    transform-origin: 50% 0;
+    opacity: 0;
+}
+
+#toggler:checked ~ .nav-items{
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+ul{
+    margin-top: 1em;
+} 
+
+ul li{
+    color: #fff
 }
